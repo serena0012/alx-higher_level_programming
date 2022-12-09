@@ -3,8 +3,8 @@
 def complex__delete(a_dictionary, value):
     while value in a_dictionary.values():
         for k, v in a_dictionary.items():
-             if v == value:
-                 del a_dictionary[k]
-                 break
+            if v == value:
+                del a_dictionary[k]
+    break
 
     return (a_dictionary)
