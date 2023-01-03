@@ -92,5 +92,4 @@ class Rectangle:
         Returns:
             str: A string representation of this Rectangle's initialization.
         '''
-        return 'Rectangle({:d}, {:d})'.format(self.width, self.height
-                )
+        return 'Rectangle({:d}, {:d})'.format(self.width, self.height)
