@@ -1,5 +1,5 @@
 #!/usr/bin/pyhton3
-# Brennan D Baraban <375@holbertonschool.com>
+# Gbenga Elegbede
 """Defines a base geometry class BaseGeometry."""
 
 
