@@ -1,28 +1,17 @@
 #!/usr/bin/python3
-"""
-This script takes in an argument and
-displays all values in the states
-where `name` matches the argument
-from the database `hbtn_0e_0_usa`.
-"""
-
+# Lists all cities of the database hbtn_0e_4_usa, ordered by city id.
+# Usage: ./4-cities_by_state.py <mysql username> \
+#                               <mysql password> \
+#                               <database name>
+import sys
 import MySQLdb
-from sys import argv
 
-if __name__ == '__main__':
-    """
-    Access to the database and get the states
-    from the database.
-    """
-
-    db = MySQLdb.connect(host="localhost", user=argv[1], port=3306,
-                         passwd=argv[2], db=argv[3])
-
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states \
-                 WHERE name LIKE BINARY '{}' \
-                 ORDER BY states.id ASC".format(argv[4]))
-    rows = cur.fetchall()
-
-    for row in rows:
-        print(row)
+if __name__ == "__main__":
+    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
+    c = db.cursor()
+    c.execute("SELECT `c`.`id`, `c`.`name`, `s`.`name` \
+                 FROM `cities` as `c` \
+                INNER JOIN `states` as `s` \
+                   ON `c`.`state_id` = `s`.`id` \
+                ORDER BY `c`.`id`")
+    [print(city) for city in c.fetchall()]
